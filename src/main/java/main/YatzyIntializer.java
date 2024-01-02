@@ -9,7 +9,7 @@ public class YatzyIntializer {
 
     public static final int DEFAULT_LENGTH = 5;
 
-  public record Dice (int d1, int d2, int d3, int d4, int d5, int length, int[] valuesArray) {
+  public record Dice (int d1, int d2, int d3, int d4, int d5) {
 
       public int[] toArray() {
           return new int[]{d1, d2,  d3,  d4, d5};
@@ -24,13 +24,8 @@ public class YatzyIntializer {
 
     protected static Dice dice;
     public YatzyIntializer(int d1, int d2, int d3, int d4, int d5)
-    {   int[] values = new int[5];
-        values[0] = d1;
-        values[1] = d2;
-        values[2] = d3;
-        values[3] = d4;
-        values[4] = d5;
-        dice = new Dice(d1, d2,  d3,  d4, d5, 5,values);
+    {
+        dice = new Dice(d1, d2,  d3,  d4, d5);
         yatzyCases.put("CHANCE", new Chance());
         yatzyCases.put("YATZY", new YatzyDice());
         yatzyCases.put("ONES", new Ones());

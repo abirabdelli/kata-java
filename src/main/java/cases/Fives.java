@@ -8,8 +8,8 @@ public class Fives implements YatzyDiceCase {
     public int applyYatzy(YatzyIntializer.Dice dice) {
         int s = 0;
         int i;
-        for (i = 0; i < dice.length(); i++)
-            if (dice.valuesArray()[i] == 5)
+        for (i = 0; i < dice.getLength(); i++)
+            if (dice.toArray()[i] == 5)
                 s = s + 5;
         return s;
     }
