@@ -1,4 +1,5 @@
 import main.YatzyInitializer;
+import utils.TestCaseDataIntializer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,13 +12,13 @@ public class TestCaseDataProvider {
     public static Map<String, int[]> expectedValuesByType = new HashMap<>();
     public static Map<String, YatzyInitializer.Dice[]> diceCasesByType = new HashMap<>();
 
-    Stream<TestCaseData> provide(String type) throws Exception {
+    private static Stream<TestCaseData> provide(String type) throws Exception {
         List<TestCaseData> result = new ArrayList<>();
         if (!expectedValuesByType.isEmpty() && !diceCasesByType.isEmpty() && expectedValuesByType.size() == diceCasesByType.size()) {
             int[] expectedValues = expectedValuesByType.get(type);
             YatzyInitializer.Dice[] diceCases = diceCasesByType.get(type);
-            for (int i=0; i<expectedValues.length;i++) {
-                TestCaseData testCaseData = new TestCaseData(expectedValues[i],type, diceCases[i]);
+            for (int i = 0; i < expectedValues.length; i++) {
+                TestCaseData testCaseData = new TestCaseData(expectedValues[i], type, diceCases[i]);
                 result.add(testCaseData);
             }
             return result.stream();
@@ -26,23 +27,43 @@ public class TestCaseDataProvider {
         }
     }
 
-    public void init() {
 
-        expectedValuesByType.put("YATZY", new int[]{50,50,0} );
-        expectedValuesByType.put("CHANCE", new int[] {15,16});
+    static Stream<TestCaseData> chanceCaseDataProvider() throws Exception {
+        return provide("CHANCE");
+    }
 
-        diceCasesByType.put("YATZY",new YatzyInitializer.Dice[]{
-            new YatzyInitializer.Dice(4, 4, 4, 4, 4),
-            new YatzyInitializer.Dice(6, 6, 6, 6, 6),
-            new YatzyInitializer.Dice(6, 6, 6, 6, 3)
-        });
-
-        diceCasesByType.put("CHANCE",new YatzyInitializer.Dice[]{
-            new YatzyInitializer.Dice(2, 3, 4, 5, 1),
-            new YatzyInitializer.Dice(3, 3, 4, 5, 1)
-        });
+    static Stream<TestCaseData> yatzyCaseDataProvider() throws Exception {
+        return provide("YATZY");
+    }
 
 
+    static Stream<TestCaseData> onesCaseDataProvider() throws Exception {
+        return provide("ONES");
+    }
+
+    static Stream<TestCaseData> twosCaseDataProvider() throws Exception {
+        return provide("TWOS");
+    }
+
+    static Stream<TestCaseData> threesCaseDataProvider() throws Exception {
+        return provide("THREES");
+    }
+
+    static Stream<TestCaseData> foursCaseDataProvider() throws Exception {
+        return provide("FOURS");
+    }
+
+    static Stream<TestCaseData> fivesCaseDataProvider() throws Exception {
+        return provide("FIVES");
+    }
+
+    static Stream<TestCaseData> sixesCaseDataProvider() throws Exception {
+        return provide("SIXES");
+    }
+
+    public static void init() {
+        expectedValuesByType = TestCaseDataIntializer.initExpectedResults();
+        diceCasesByType = TestCaseDataIntializer.initDiceCasesByType();
     }
 }
 
