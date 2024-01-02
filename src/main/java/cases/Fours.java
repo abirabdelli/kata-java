@@ -1,10 +1,10 @@
 package cases;
 
-import main.YatzyIntializer;
+import main.YatzyInitializer;
 
 public class Fours implements YatzyCase {
     @Override
-    public int applyYatzy(YatzyIntializer.Dice dice) {
+    public int applyYatzy(YatzyInitializer.Dice dice) {
         int sum;
         sum = 0;
         for (int at = 0; at != 5; at++) {

@@ -1,7 +1,7 @@
-import main.YatzyIntializer;
+import main.YatzyInitializer;
 
 public record TestCaseData (
     int expectedValue,
     String type,
-    YatzyIntializer.Dice dice
+    YatzyInitializer.Dice dice
 ) {}

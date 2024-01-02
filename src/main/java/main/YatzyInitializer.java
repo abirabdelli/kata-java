@@ -5,7 +5,7 @@ import cases.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class YatzyIntializer {
+public class YatzyInitializer {
 
     public static final int DEFAULT_LENGTH = 5;
 
@@ -23,7 +23,7 @@ public class YatzyIntializer {
     static Map<String, YatzyCase> yatzyCases = new HashMap<>();
 
     protected static Dice dice;
-    public YatzyIntializer(Dice diceInput)
+    public YatzyInitializer(Dice diceInput)
     {
         dice = diceInput;
         yatzyCases.put("CHANCE", new Chance());
@@ -39,7 +39,7 @@ public class YatzyIntializer {
     }
 
     public static int apply(String type,Dice dice) {
-        new YatzyIntializer( dice);
+        new YatzyInitializer( dice);
        return yatzyCases.get(type).applyYatzy(dice);
     }
     public static int score_pair(int d1, int d2, int d3, int d4, int d5)

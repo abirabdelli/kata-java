@@ -1,11 +1,11 @@
 package cases;
 
-import main.YatzyIntializer;
+import main.YatzyInitializer;
 
 public class Fives implements YatzyCase {
 
     @Override
-    public int applyYatzy(YatzyIntializer.Dice dice) {
+    public int applyYatzy(YatzyInitializer.Dice dice) {
         int s = 0;
         int i;
         for (i = 0; i < dice.getLength(); i++)

@@ -1,5 +1,5 @@
-import main.YatzyIntializer;
-import org.junit.jupiter.api.Test;
+import main.YatzyInitializer;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -7,28 +7,34 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class YatzyIntializerTest {
+public class YatzyInitializerTest {
+    static TestCaseDataProvider provider;
 
-    @Test
-    public void chance_scores_sum_of_all_dice() {
-        int expected = 15;
-        int actual = YatzyIntializer.apply("CHANCE", new YatzyIntializer.Dice(2, 3, 4, 5, 1));
-        assertEquals(expected, actual);
-        assertEquals(16, YatzyIntializer.apply("CHANCE", new YatzyIntializer.Dice(3, 3, 4, 5, 1)));
+    @BeforeAll
+    public static void setup() {
+        provider = new TestCaseDataProvider();
+        provider.init();
     }
 
-    @ParameterizedTest(name = "{index} => expectedValues={0}, d1={1}, d1={1}, d2={2}, d3={3},d4={4},d5={5}, type= {6}")
+
+    @ParameterizedTest
+    @MethodSource("chanceCaseDataProvider")
+    void test_chance_case(TestCaseData testCaseData) {
+        assertEquals(testCaseData.expectedValue(), YatzyInitializer.apply(testCaseData.type(), testCaseData.dice()));
+    }
+
+    private static Stream<TestCaseData> chanceCaseDataProvider() throws Exception {
+        return provider.provide("CHANCE");
+    }
+
+    @ParameterizedTest
     @MethodSource("yatzyCaseDataProvider")
     void test_yatzy_case(TestCaseData testCaseData) {
-        assertEquals(testCaseData.expectedValue(), YatzyIntializer.apply(testCaseData.type(), testCaseData.dice()));
+        assertEquals(testCaseData.expectedValue(), YatzyInitializer.apply(testCaseData.type(), testCaseData.dice()));
     }
 
-    private static Stream<TestCaseData> yatzyCaseDataProvider() {
-        return Stream.of(
-            new TestCaseData(50, "YATZY", new YatzyIntializer.Dice(4, 4, 4, 4, 4)),
-            new TestCaseData(50, "YATZY", new YatzyIntializer.Dice(6, 6, 6, 6, 6)),
-            new TestCaseData(0, "YATZY", new YatzyIntializer.Dice(6, 6, 6, 6, 3))
-        );
+    private static Stream<TestCaseData> yatzyCaseDataProvider() throws Exception {
+        return provider.provide("YATZY");
     }
 
  /*   @Test public void test_1s() {

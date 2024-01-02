@@ -1,5 +1,5 @@
 package cases;
-import main.YatzyIntializer.Dice;
+import main.YatzyInitializer.Dice;
 
 @FunctionalInterface
 public interface YatzyCase {
