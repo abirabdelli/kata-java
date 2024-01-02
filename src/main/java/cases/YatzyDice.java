@@ -1,7 +1,7 @@
 package cases;
 import main.YatzyIntializer.Dice;
 
-public class YatzyDice implements YatzyDiceCase {
+public class YatzyDice implements YatzyCase {
     @Override
     public int applyYatzy(Dice dice) {
         int[] counts = new int[6];

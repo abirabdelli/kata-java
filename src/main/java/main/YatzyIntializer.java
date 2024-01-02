@@ -20,12 +20,12 @@ public class YatzyIntializer {
       }
   }
 
-    static Map<String, YatzyDiceCase> yatzyCases = new HashMap<>();
+    static Map<String, YatzyCase> yatzyCases = new HashMap<>();
 
     protected static Dice dice;
-    public YatzyIntializer(int d1, int d2, int d3, int d4, int d5)
+    public YatzyIntializer(Dice diceInput)
     {
-        dice = new Dice(d1, d2,  d3,  d4, d5);
+        dice = diceInput;
         yatzyCases.put("CHANCE", new Chance());
         yatzyCases.put("YATZY", new YatzyDice());
         yatzyCases.put("ONES", new Ones());
@@ -38,8 +38,8 @@ public class YatzyIntializer {
 
     }
 
-    public static int apply(String type, int d1, int d2, int d3, int d4, int d5) {
-        new YatzyIntializer( d1,  d2,  d3,  d4,  d5);
+    public static int apply(String type,Dice dice) {
+        new YatzyIntializer( dice);
        return yatzyCases.get(type).applyYatzy(dice);
     }
     public static int score_pair(int d1, int d2, int d3, int d4, int d5)

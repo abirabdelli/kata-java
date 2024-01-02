@@ -2,7 +2,7 @@ package cases;
 
 import main.YatzyIntializer;
 
-public class Threes implements YatzyDiceCase {
+public class Threes implements YatzyCase {
 
     @Override
     public int applyYatzy(YatzyIntializer.Dice dice) {

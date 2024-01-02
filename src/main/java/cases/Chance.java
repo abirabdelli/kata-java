@@ -1,7 +1,7 @@
 package cases;
 import main.YatzyIntializer.Dice;
 
-public class Chance implements YatzyDiceCase {
+public class Chance implements YatzyCase {
     @Override
     public int applyYatzy(Dice dice) {
         int total = 0;
