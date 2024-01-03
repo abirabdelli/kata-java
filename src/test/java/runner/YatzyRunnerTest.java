@@ -1,3 +1,5 @@
+package runner;
+
 import model.TestCaseData;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,8 +24,6 @@ public class YatzyRunnerTest {
     void test_chance_case(TestCaseData testCaseData) {
         verifyTestCase(testCaseData);
     }
-
-   
 
     @ParameterizedTest
     @MethodSource("utils.TestCaseDataProvider#yatzyCaseDataProvider")
