@@ -1,5 +1,5 @@
 package cases;
-import main.YatzyInitializer.Dice;
+import model.Dice;
 
 public class YatzyDice implements YatzyCase {
     @Override

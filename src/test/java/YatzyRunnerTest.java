@@ -1,42 +1,45 @@
-import main.YatzyInitializer;
+import model.TestCaseData;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import utils.TestCaseDataProvider;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class YatzyInitializerTest {
+public class YatzyRunnerTest {
 
 
     @BeforeAll
     public static void setup() {
 
         TestCaseDataProvider.init();
+
     }
 
 
     @ParameterizedTest
-    @MethodSource("TestCaseDataProvider#chanceCaseDataProvider")
+    @MethodSource("utils.TestCaseDataProvider#chanceCaseDataProvider")
     void test_chance_case(TestCaseData testCaseData) {
         verifyTestCase(testCaseData);
     }
 
+   
 
     @ParameterizedTest
-    @MethodSource("TestCaseDataProvider#yatzyCaseDataProvider")
+    @MethodSource("utils.TestCaseDataProvider#yatzyCaseDataProvider")
     void test_yatzy_case(TestCaseData testCaseData) {
         verifyTestCase(testCaseData);
     }
 
 
     @ParameterizedTest
-    @MethodSource("TestCaseDataProvider#onesCaseDataProvider")
+    @MethodSource("utils.TestCaseDataProvider#onesCaseDataProvider")
     void test_ones_case(TestCaseData testCaseData) {
         verifyTestCase(testCaseData);
     }
 
     @ParameterizedTest
-    @MethodSource("TestCaseDataProvider#twosCaseDataProvider")
+    @MethodSource("utils.TestCaseDataProvider#twosCaseDataProvider")
     public void test_twos_case(TestCaseData testCaseData) {
         verifyTestCase(testCaseData);
 
@@ -44,25 +47,25 @@ public class YatzyInitializerTest {
 
 
     @ParameterizedTest
-    @MethodSource("TestCaseDataProvider#threesCaseDataProvider")
+    @MethodSource("utils.TestCaseDataProvider#threesCaseDataProvider")
     public void test_threes_case(TestCaseData testCaseData) {
         verifyTestCase(testCaseData);
     }
 
     @ParameterizedTest
-    @MethodSource("TestCaseDataProvider#foursCaseDataProvider")
+    @MethodSource("utils.TestCaseDataProvider#foursCaseDataProvider")
     public void test_fours_case(TestCaseData testCaseData) {
         verifyTestCase(testCaseData);
     }
 
     @ParameterizedTest
-    @MethodSource("TestCaseDataProvider#fivesCaseDataProvider")
+    @MethodSource("utils.TestCaseDataProvider#fivesCaseDataProvider")
     public void test_fives_case(TestCaseData testCaseData) {
         verifyTestCase(testCaseData);
     }
 
     @ParameterizedTest
-    @MethodSource("TestCaseDataProvider#sixesCaseDataProvider")
+    @MethodSource("utils.TestCaseDataProvider#sixesCaseDataProvider")
     public void sixes_test(TestCaseData testCaseData) {
         verifyTestCase(testCaseData);
     }
@@ -116,6 +119,6 @@ public class YatzyInitializerTest {
             assertEquals(0, YatzyIntializer.fullHouse(2,3,4,5,6));
         }*/
     private static void verifyTestCase(TestCaseData testCaseData) {
-        assertEquals(testCaseData.expectedValue(), YatzyInitializer.apply(testCaseData.type(), testCaseData.dice()));
+        assertEquals(testCaseData.expectedValue(), YatzyRunner.apply(testCaseData.type(), testCaseData.dice()));
     }
 }

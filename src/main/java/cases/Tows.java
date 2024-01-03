@@ -1,11 +1,11 @@
 package cases;
 
-import main.YatzyInitializer;
+import model.Dice;
 
 public class Tows implements YatzyCase {
 
     @Override
-    public int applyYatzy(YatzyInitializer.Dice dice) {
+    public int applyYatzy(Dice dice) {
         int sum = 0;
         if (dice.d1() == 2) sum += 2;
         if (dice.d2() == 2) sum += 2;

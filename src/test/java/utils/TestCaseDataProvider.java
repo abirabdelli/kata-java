@@ -1,5 +1,7 @@
-import main.YatzyInitializer;
-import utils.TestCaseDataIntializer;
+package utils;
+
+import model.Dice;
+import model.TestCaseData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,13 +12,13 @@ import java.util.stream.Stream;
 public class TestCaseDataProvider {
 
     public static Map<String, int[]> expectedValuesByType = new HashMap<>();
-    public static Map<String, YatzyInitializer.Dice[]> diceCasesByType = new HashMap<>();
+    public static Map<String, Dice[]> diceCasesByType = new HashMap<>();
 
-    private static Stream<TestCaseData> provide(String type) throws Exception {
+    public static Stream<TestCaseData> provide(String type) throws Exception {
         List<TestCaseData> result = new ArrayList<>();
         if (!expectedValuesByType.isEmpty() && !diceCasesByType.isEmpty() && expectedValuesByType.size() == diceCasesByType.size()) {
             int[] expectedValues = expectedValuesByType.get(type);
-            YatzyInitializer.Dice[] diceCases = diceCasesByType.get(type);
+            Dice[] diceCases = diceCasesByType.get(type);
             for (int i = 0; i < expectedValues.length; i++) {
                 TestCaseData testCaseData = new TestCaseData(expectedValues[i], type, diceCases[i]);
                 result.add(testCaseData);

@@ -1,10 +1,10 @@
 package cases;
 
-import main.YatzyInitializer;
+import model.Dice;
 
 public class Sixes implements YatzyCase {
     @Override
-    public int applyYatzy(YatzyInitializer.Dice dice) {
+    public int applyYatzy(Dice dice) {
         int sum = 0;
         for (int at = 0; at < dice.getLength(); at++)
             if (dice.toArray()[at] == 6)
